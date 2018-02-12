@@ -8,15 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Armface</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-
-
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     <div id="app">
@@ -34,14 +29,8 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                       Armface
+                        {{ config('app.name', 'Laravel') }}
                     </a>
-                    <ul class="nav navbar-nav">
-                        <li  {{{ (Request::is('home') ? 'class=active' : '') }}}><a href="/home">Home</a></li>
-                        @if(!empty(Auth::user()) && Auth::user()->isAdmin == 1)
-                            <li  {{{ (Request::is('admin/users') ? 'class=active' : '') }}}><a href="/admin/users">Manage Users</a></li>
-                        @endif
-                    </ul>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -86,16 +75,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
-
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    </script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
